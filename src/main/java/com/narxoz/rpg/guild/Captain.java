@@ -31,4 +31,7 @@ public class Captain extends GuildMember {
     public void requestPlan(String quest) {
         getMediator().dispatch("planning", this, "План для квеста: " + quest);
     }
+    public void requestPlanForQuest(String questName) {
+        getMediator().dispatch("planning", this, "План для квеста: " + questName);
+    }
 }

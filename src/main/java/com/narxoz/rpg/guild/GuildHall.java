@@ -15,12 +15,15 @@ public class GuildHall implements GuildMediator {
 
     @Override
     public void dispatch(String topic, GuildMember from, String payload) {
-        System.out.println("[GuildHall] Маршрутизация '" + topic + "' от " + from.getName() + ": " + payload);
+        String senderName = (from != null) ? from.getName() : "СИСТЕМА";
+        System.out.println("[GuildHall] Маршрутизация '" + topic + "' от " + senderName + ": " + payload);
 
         List<GuildMember> members = subscribers.get(topic);
         if (members != null) {
             for (GuildMember member : members) {
-                member.receive(topic, from, payload);
+                if (from == null || member != from) {
+                    member.receive(topic, from, payload);
+                }
             }
         }
     }
