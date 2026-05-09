@@ -26,10 +26,10 @@ public class QuestLog {
 
     public QuestIterator priorityAtLeast(QuestPriority minPriority) {
         return new PriorityQuestIterator(this, minPriority);
+    }// Добавьте этот метод в класс QuestLog
+    public QuestIterator rewardSorted() {
+        return new RewardSortedQuestIterator(this);
     }
 
-    // День 4: добавим позже
-    // public QuestIterator rewardSorted() {
-    //     return new RewardSortedQuestIterator(this);
-    // }
+
 }
